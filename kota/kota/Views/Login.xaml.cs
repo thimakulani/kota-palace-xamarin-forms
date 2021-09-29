@@ -16,5 +16,18 @@ namespace kota.Views
         {
             InitializeComponent();
         }
+
+        private async void BtnLogin_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var results = await Plugin.FirebaseAuth.CrossFirebaseAuth.Current.Instance.SignInWithEmailAndPasswordAsync(InputEmail.Text, InputPassword.Text);
+
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("ERROR", ex.Message, "OK");
+            }
+        }
     }
 }

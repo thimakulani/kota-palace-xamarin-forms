@@ -1,4 +1,5 @@
-﻿using System;
+﻿using kota.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,8 +10,28 @@ namespace kota
         public App()
         {
             InitializeComponent();
+            if(Plugin.FirebaseAuth.CrossFirebaseAuth.Current.Instance.CurrentUser != null)
+            {
+                MainPage = new MainPage();
+              
+            }
+            else
+            {
+                MainPage = new Login();
+            }
+            Plugin.FirebaseAuth.CrossFirebaseAuth.Current.Instance.AuthState += Instance_AuthState;
+        }
 
-            MainPage = new MainPage();
+        private void Instance_AuthState(object sender, Plugin.FirebaseAuth.AuthStateEventArgs e)
+        {
+            if(e.Auth.CurrentUser != null)
+            {
+                MainPage = new MainPage();
+            }
+            else
+            {
+                MainPage = new Login();
+            }
         }
 
         protected override void OnStart()

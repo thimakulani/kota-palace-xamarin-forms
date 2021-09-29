@@ -1,12 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:kota.CustomeRender"
              x:Class="kota.Views.Login">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+    <StackLayout Padding="0">
+        <Grid>
+            <StackLayout Padding="0" Margin="0">
+                <Frame BackgroundColor="AliceBlue" HeightRequest="250" HorizontalOptions="FillAndExpand"> 
+                    
+                </Frame>
+            </StackLayout>
+            <StackLayout Margin="15,110,15,0">
+                <Frame BackgroundColor="#FFFFFF" HasShadow="True" HeightRequest="420" HorizontalOptions="FillAndExpand" >
+                    <StackLayout>
+                        <StackLayout HorizontalOptions="CenterAndExpand">
+                            <Label Text="SIGN IN" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>
+                        </StackLayout>
+                        <StackLayout Margin="0, 25, 0, 0">
+                            <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" Margin="0" CornerRadius="50" HorizontalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame BackgroundColor="AliceBlue" CornerRadius="50" WidthRequest="35" HeightRequest="35" Padding="0" Margin="7" HorizontalOptions="Start">
+                                        
+                                    </Frame>
+                                    <local:CustomEntry Placeholder="Email" TextColor="HotPink" x:Uid="InputEmail" x:Name="InputEmail" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                                </StackLayout>
+                            </Frame>
+                            <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" Margin="0" CornerRadius="50" HorizontalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame BackgroundColor="AliceBlue" CornerRadius="50" WidthRequest="35" HeightRequest="35" Padding="0" Margin="7" HorizontalOptions="Start">
+
+                                    </Frame>
+                                    <local:CustomEntry Placeholder="Password" x:Uid="InputPassword" x:Name="InputPassword" IsPassword="True" TextColor="HotPink" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" />
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Margin="0, 15, 0, 0">
+                            <Label Text="Forgot Password" HorizontalTextAlignment="End" VerticalTextAlignment="Center" />
+                        </StackLayout>
+                        <Button Text="Login" BackgroundColor="#3F5E65" CornerRadius="25" Margin="0, 15, 0, 0" TextColor="White" x:Name="BtnLogin" Clicked="BtnLogin_Clicked"/>
+                        <StackLayout Orientation="Horizontal" Margin="0, 10, 0, 0">
+                            <Label Text="Don't Have an Account?" />
+                            <Label Text="Sign up" TextColor="Red"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                </Frame>
+                
+            </StackLayout>
+        </Grid>
+    </StackLayout>
 </ContentPage>

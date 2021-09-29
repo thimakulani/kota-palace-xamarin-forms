@@ -1,4 +1,7 @@
-﻿using System;
+﻿using kota.Models;
+using Plugin.CloudFirestore;
+using Plugin.FirebaseAuth;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,6 +16,27 @@ namespace kota
         public MainPage()
         {
             InitializeComponent();
+
+
+            var user = CrossFirebaseAuth
+                .Current
+                .Instance
+                .CurrentUser;
+            CrossCloudFirestore
+                .Current
+                .Instance
+                .Collection("Customers")
+                .Document(user.Uid)
+                .AddSnapshotListener((value, error) =>
+                {
+                    if (value.Exists)
+                    {
+                        var customer = value.ToObject<Customer>();
+                        lblNames.Text = $"HI, {customer.Name}".ToUpper();
+                    }
+
+                });
         }
+       
     }
 }
